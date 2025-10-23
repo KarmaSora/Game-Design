@@ -21,18 +21,16 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if(Input.GetKeyDown(KeyCode.W))
-        //{
         horizontalInput = Input.GetAxis("Horizontal");  // horizontal = left and right
         verticalInput = Input.GetAxis("Vertical"); //Vertical means  up and down
+
+
         transform.Translate(Vector3.forward * Time.deltaTime * carSpeedMultiplier * verticalInput);
-        //}
 
-        //if(Input.GetKeyDown(KeyCode.D))
-        //{
 
-        transform.Translate(Vector3.right * Time.deltaTime * turnSpeed * horizontalInput);
-        //}
+        //transform.Translate(Vector3.right * Time.deltaTime * turnSpeed * horizontalInput);  // moves the player sideways
+        transform.Rotate(Vector3.up,turnSpeed * horizontalInput *Time.deltaTime);  // makes the player rotate
+
 
     }
 }
