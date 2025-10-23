@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     public float turnSpeed = 15.0f;
 
     public float horizontalInput;
+    public float verticalInput;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +23,9 @@ public class PlayerController : MonoBehaviour
     {
         //if(Input.GetKeyDown(KeyCode.W))
         //{
-        horizontalInput = Input.GetAxis("Horizontal");
-        transform.Translate(Vector3.forward * Time.deltaTime * carSpeedMultiplier);
+        horizontalInput = Input.GetAxis("Horizontal");  // horizontal = left and right
+        verticalInput = Input.GetAxis("Vertical"); //Vertical means  up and down
+        transform.Translate(Vector3.forward * Time.deltaTime * carSpeedMultiplier * verticalInput);
         //}
 
         //if(Input.GetKeyDown(KeyCode.D))
