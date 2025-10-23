@@ -6,7 +6,10 @@ using UnityEngine.UIElements;
 public class PlayerController : MonoBehaviour
 {
 
-    public int carSpeedMultiplier = 90;
+    public float carSpeedMultiplier = 90.0f;
+    public float turnSpeed = 15.0f;
+
+    public float horizontalInput;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,9 +21,15 @@ public class PlayerController : MonoBehaviour
     {
         //if(Input.GetKeyDown(KeyCode.W))
         //{
-
-        transform.Translate(Vector3.forward * Time.deltaTime * carSpeedMultiplier);   
+        horizontalInput = Input.GetAxis("Horizontal");
+        transform.Translate(Vector3.forward * Time.deltaTime * carSpeedMultiplier);
         //}
-        
+
+        //if(Input.GetKeyDown(KeyCode.D))
+        //{
+
+        transform.Translate(Vector3.right * Time.deltaTime * turnSpeed * horizontalInput);
+        //}
+
     }
 }
